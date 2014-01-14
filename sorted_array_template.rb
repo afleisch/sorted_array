@@ -29,7 +29,10 @@ class SortedArray
     if start_ind >= end_ind  
       return 0 
     end
-
+    #test: "can pick before or after a single element; since the array passed as the argument
+    #is only one element, size will be 1 and 1 - 0 ==1.  since that will be true...
+    #if the target value is less than the value found at index0, return that value's index,
+    #otherwise return the last element'd index.
     if (end_ind-start_ind) == 1
 
       if target < @internal_arr[start_ind] 
