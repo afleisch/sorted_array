@@ -79,13 +79,18 @@ describe SortedArray do
     it 'gives 0 for an empty array' do
       @sorted_array.internal_arr = []
       @sorted_array.first_larger_index(4).should == 0
-    end
     #if it works, then first_larger_index should return the index of the first element in the array than which 4 is greater.
     #beginning at [0]...since internal_arr[0] = 2,  which is less than 4, it would pass.
+    end
+    
     it 'can pick before or after a single element' do
       @sorted_array.internal_arr = [5]
       @sorted_array.first_larger_index(4).should == 0
       @sorted_array.first_larger_index(6).should == 1
+     #for a one-element array of 5, if you are looking for 4...
+     #if it works then the first index of the value that is greater than 4, will be 0, 
+     #the index of 5.  if you are looking for 6...the first index of the value that is 
+     #greater than 5 will come directly after 5, at index 1.
     end
 
     it 'can pick before, after or between two elements' do
@@ -93,22 +98,32 @@ describe SortedArray do
       @sorted_array.first_larger_index(4).should == 0
       @sorted_array.first_larger_index(6).should == 1
       @sorted_array.first_larger_index(8).should == 2
+      #the index of the first value larger than 4 should be 0,
+      #the index of the first value larger than 6 should come right after, at index 1
+      #the index of the 
     end
 
     it 'can put an existing element on either side' do
       @sorted_array.internal_arr = [5]
       [0,1].include?(@sorted_array.first_larger_index(5)).should == true
+      #since it is a one element array, 5 has index 0, and since an array of [0,1]
+      #includes that index, it evaluates to true
     end
 
     it 'gives 0 for a new smallest' do
       @sorted_array.first_larger_index(-4).should == 0
+       #-4 is now the smallest value so its index should be 0, the first
+      #in the array
     end
 
     it 'gives the last index for a new largest' do
       @sorted_array.first_larger_index(10).should == @sorted_array.size
+      #10 is now the largest value so its index should be the size 
+      #of the array when 10 is added (not after - then it would be 5 not 4)
     end
     it 'gives the right location' do
       @sorted_array.first_larger_index(5).should == 3
+      #the index of the first value greater than 5 should be 3 aka '7'
     end
   end
 
