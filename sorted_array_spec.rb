@@ -1,6 +1,6 @@
 
 require 'rspec'
-require './sorted_array.rb'
+require './sorted_array_template.rb'
 
 describe SortedArray do
 
@@ -80,7 +80,8 @@ describe SortedArray do
       @sorted_array.internal_arr = []
       @sorted_array.first_larger_index(4).should == 0
     end
-
+    #if it works, then first_larger_index should return the index of the first element in the array than which 4 is greater.
+    #beginning at [0]...since internal_arr[0] = 2,  which is less than 4, it would pass.
     it 'can pick before or after a single element' do
       @sorted_array.internal_arr = [5]
       @sorted_array.first_larger_index(4).should == 0
