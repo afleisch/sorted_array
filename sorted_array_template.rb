@@ -33,6 +33,7 @@ class SortedArray
     #is only one element, size will be 1 and 1 - 0 ==1.  since that will be true...
     #if the target value is less than the value found at index0, return that value's index,
     #otherwise return the last element'd index.
+     mid_index = (start_ind + end_ind) / 2  
     if (end_ind-start_ind) == 1
 
       if target < @internal_arr[start_ind] 
@@ -40,9 +41,9 @@ class SortedArray
       else 
         return end_ind
       end
-    end 
-
-    mid_index = (start_ind + end_ind) / 2  
+    end
+    #test:
+   
 
     if target < @internal_arr[mid_index]
       return first_larger_index(target, start_ind, mid_index)
@@ -50,7 +51,7 @@ class SortedArray
     elsif target >= @internal_arr[mid_index]
       return first_larger_index(target, mid_index, end_ind)  
 
-    end 
+    end  
 
     # raise NotImplementedError.new("You need to implement the first_larger_index method!")
   end
