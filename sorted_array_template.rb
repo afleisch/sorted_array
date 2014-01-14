@@ -3,7 +3,14 @@ class SortedArray
 
   def initialize(input_arr=[])
     @internal_arr = []
-    input_arr.each{|elem| self.add(elem)}
+    input_arr.each{|elem| @internal_arr.push(elem)}
+
+    unless input_arr.empty? == true
+      input_arr.replace(input_arr.sort)
+      
+
+    end
+    
 
     # Fill in the rest of the initialize method here.
     # What should you do with each element of the incoming array?
@@ -11,8 +18,8 @@ class SortedArray
 
   def add(new_elem)
     # Hint: Use the Array#insert method.
-    #@internal_arr.insert(first_larger_index(new_elem), 0, @internal_arr.size),
-    raise NotImplementedError.new("You need to implement the add method!")
+    #@internal_arr.insert(first_larger_index(new_elem), 0, @internal_arr.size)
+    #raise NotImplementedError.new("You need to implement the add method!")
   end
 
   def size
@@ -20,7 +27,8 @@ class SortedArray
   end
 
   def [](index)
-    raise NotImplementedError.new("You need to implement the [] method!")
+    return internal_arr[index]
+    #raise NotImplementedError.new("You need to implement the [] method!")
   end
 
   def first_larger_index(target, start_ind=0, end_ind=@internal_arr.size)
@@ -41,14 +49,14 @@ class SortedArray
       else 
         return end_ind
       end
-    end
+   end
     #test:
    
 
     if target < @internal_arr[mid_index]
       return first_larger_index(target, start_ind, mid_index)
 
-    elsif target >= @internal_arr[mid_index]
+     elsif target >= @internal_arr[mid_index]
       return first_larger_index(target, mid_index, end_ind)  
 
     end  
